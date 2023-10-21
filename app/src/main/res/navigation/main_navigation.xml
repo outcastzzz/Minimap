@@ -9,5 +9,23 @@
         android:id="@+id/welcomeFragment"
         android:name="com.example.myapplication.presentation.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" />
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_scannerFragment"
+            app:destination="@id/scannerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scannerFragment"
+        android:name="com.example.myapplication.presentation.ScannerFragment"
+        android:label="fragment_scanner"
+        tools:layout="@layout/fragment_scanner" >
+        <action
+            android:id="@+id/action_scannerFragment_to_listOfRooms"
+            app:destination="@id/listOfRooms" />
+    </fragment>
+    <fragment
+        android:id="@+id/listOfRooms"
+        android:name="com.example.myapplication.presentation.ListOfRooms"
+        android:label="fragment_list_of_rooms"
+        tools:layout="@layout/fragment_list_of_rooms" />
 </navigation>

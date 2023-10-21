@@ -6,12 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentListOfRoomsBinding
-import javax.inject.Inject
+import com.example.myapplication.presentation.adapters.RoomItemAdapter
 
 class ListOfRooms(
-    context: Context
+    private val context: Context
 ) : Fragment() {
 
     private lateinit var roomItemAdapter: RoomItemAdapter
@@ -36,16 +35,13 @@ class ListOfRooms(
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding = null
     }
 
     private fun setupRecyclerView() {
         with(binding.rvShopList) {
-            roomItemAdapter = RoomItemAdapter()
+            roomItemAdapter = RoomItemAdapter(context)
             adapter = roomItemAdapter
-            recycledViewPool.setMaxRecycledViews(
-                RoomItemAdapter.VIEW_TYPE,
-                RoomItemAdapter.MAX_POOL_SIZE
-            )
         }
     }
 }

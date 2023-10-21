@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.ScannerFragment">
+
+    <com.budiyev.android.codescanner.CodeScannerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scanner"
+        app:autoFocusButtonColor="@color/black"
+        app:autoFocusButtonVisible="true"
+        app:flashButtonColor="@color/black"
+        app:flashButtonVisible="true"
+        app:maskColor="#010735"
+        app:frameColor="@color/white"/>
+
+</RelativeLayout>
