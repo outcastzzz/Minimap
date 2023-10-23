@@ -12,7 +12,7 @@ import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentListOfRoomsBinding
 import com.example.myapplication.databinding.FragmentScannerBinding
 
-class ScannerFragment : Fragment() {
+class ScannerFragment: Fragment() {
 
     private lateinit var codeScanner: CodeScanner
 

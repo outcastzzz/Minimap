@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment: Fragment() {
@@ -24,11 +26,24 @@ class WelcomeFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnFind.setOnClickListener {
+            launchListOfRooms()
+        }
+        binding.btnScan.setOnClickListener {
+            launchQrScanner()
+        }
+    }
+
+    private fun launchQrScanner() {
+        findNavController().navigate(R.id.action_welcomeFragment_to_scannerFragment)
+    }
+
+    private fun launchListOfRooms() {
+        findNavController().navigate(R.id.action_welcomeFragment_to_listOfRooms)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

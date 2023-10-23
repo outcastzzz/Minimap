@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_welcomeFragment_to_scannerFragment"
             app:destination="@id/scannerFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_listOfRooms"
+            app:destination="@id/listOfRooms" />
     </fragment>
     <fragment
         android:id="@+id/scannerFragment"
@@ -25,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/listOfRooms"
-        android:name="com.example.myapplication.presentation.ListOfRooms"
+        android:name="com.example.myapplication.presentation.ListOfRoomsFragment"
         android:label="fragment_list_of_rooms"
         tools:layout="@layout/fragment_list_of_rooms" />
 </navigation>
