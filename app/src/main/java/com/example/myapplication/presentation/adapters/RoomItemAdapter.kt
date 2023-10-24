@@ -12,7 +12,7 @@ import com.example.myapplication.databinding.ItemRoomBinding
 import com.example.myapplication.domain.entities.Room
 
 
-class RoomItemAdapter(): ListAdapter<Room, RoomViewHolder>(RoomItemDiffCallback) {
+class RoomItemAdapter: ListAdapter<Room, RoomViewHolder>(RoomItemDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomViewHolder {
         val layout = when (viewType) {
@@ -25,8 +25,8 @@ class RoomItemAdapter(): ListAdapter<Room, RoomViewHolder>(RoomItemDiffCallback)
 
     override fun onBindViewHolder(holder: RoomViewHolder, position: Int) {
         val room = getItem(position)
-        holder.tvName?.text = room.name
-        holder.tvTitle?.text = room.title
+        holder.tvName.text = "712"
+        holder.tvTitle.text = "ojdshfbvbjkj"
     }
 
     override fun getItemViewType(position: Int): Int {
