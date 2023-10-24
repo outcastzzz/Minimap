@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.example.myapplication.R
@@ -41,6 +42,13 @@ class ScannerFragment: Fragment() {
         scannerView.setOnClickListener {
             codeScanner.startPreview()
         }
+        binding.btn.setOnClickListener {
+            launchMainScreen()
+        }
+    }
+
+    private fun launchMainScreen() {
+        findNavController().navigate(R.id.action_scannerFragment_to_welcomeFragment)
     }
 
     override fun onResume() {

@@ -5,8 +5,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemRoomBinding
+import com.example.myapplication.domain.entities.Room
 
-class RoomViewHolder(val view: View): RecyclerView.ViewHolder(view) {
-    val tvName = view.findViewById<TextView>(R.id.tv_name)
-    val tvTitle = view.findViewById<TextView>(R.id.tv_title)
+class RoomViewHolder(
+    itemRoomBinding: ItemRoomBinding
+): RecyclerView.ViewHolder(itemRoomBinding.root) {
+    private val binding = itemRoomBinding
+
+    fun bind(roomItem: Room) {
+        binding.tvName.text = "1"
+        binding.tvTitle.text = "title"
+    }
+
+
 }

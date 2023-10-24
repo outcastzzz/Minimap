@@ -19,12 +19,18 @@
         app:maskColor="#010735" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#6E51A5"
-        android:text="Button"
-
-        />
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="128dp"
+        android:background="@drawable/rounded_button"
+        android:text="Back"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
 </RelativeLayout>

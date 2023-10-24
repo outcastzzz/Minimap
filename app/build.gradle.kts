@@ -54,6 +54,7 @@ dependencies {
     implementation("com.google.dagger:dagger:2.48")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
+    implementation("com.google.android.material:material:1.10.0")
     ksp("com.google.dagger:dagger-compiler:2.48")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_scannerFragment_to_listOfRooms"
             app:destination="@id/listOfRooms" />
+        <action
+            android:id="@+id/action_scannerFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/listOfRooms"
