@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentListOfRoomsBinding
 import com.example.myapplication.domain.entities.Room
 import com.example.myapplication.presentation.adapters.RoomItemAdapter
@@ -32,6 +34,9 @@ class ListOfRoomsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         populateList()
         setupRecyclerView()
+        binding.button.setOnClickListener {
+            launchWelcomeFragment()
+        }
     }
 
     override fun onDestroyView() {
@@ -57,6 +62,10 @@ class ListOfRoomsFragment: Fragment() {
 
             roomList.add(room)
         }
+    }
+
+    private fun launchWelcomeFragment() {
+        findNavController().navigate(R.id.action_listOfRooms_to_welcomeFragment)
     }
 
 }
