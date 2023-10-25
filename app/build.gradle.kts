@@ -62,7 +62,7 @@ dependencies {
 
     implementation("com.squareup.picasso:picasso:2.71828")
 
-    implementation("com.github.yuriy-budiyev:code-scanner:2.3.2")
+    implementation("me.dm7.barcodescanner:zbar:1.8.4")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -2,23 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/btn_back"
+    android:id="@+id/scanner"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".presentation.ScannerFragment">
-
-    <com.budiyev.android.codescanner.CodeScannerView
-        android:id="@+id/scanner"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:autoFocusButtonColor="@color/black"
-        app:autoFocusButtonVisible="true"
-        app:flashButtonColor="@color/black"
-        app:flashButtonVisible="true"
-        app:frameColor="@color/white"
-        app:maskColor="#010735" >
-
-    </com.budiyev.android.codescanner.CodeScannerView>
 
     <Button
         android:id="@+id/btn"
@@ -31,22 +19,9 @@
         android:layout_marginEnd="128dp"
         android:layout_marginBottom="35dp"
         android:background="@drawable/rounded_button"
+        android:backgroundTint="#052698"
         android:text="Back"
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/tv_text"
-        android:layout_width="81dp"
-        android:layout_height="29dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="128dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="115dp"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp" />
 
 </RelativeLayout>

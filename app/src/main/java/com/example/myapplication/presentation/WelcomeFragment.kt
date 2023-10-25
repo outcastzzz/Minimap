@@ -1,9 +1,14 @@
 package com.example.myapplication.presentation
 
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
@@ -30,8 +35,11 @@ class WelcomeFragment: Fragment() {
             launchListOfRooms()
         }
         binding.btnScan.setOnClickListener {
-            launchQrScanner()
+            takePhoto()
         }
+        val intent = Intent(requireActivity().applicationContext, MyReceiver::class.java )
+        intent.action = "MyAction"
+        requireActivity().sendBroadcast(intent)
     }
 
     private fun launchQrScanner() {
@@ -45,5 +53,46 @@ class WelcomeFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+
+    private val permReqLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            val granted = permissions.entries.all {
+                it.value
+            }
+            if (granted) {
+                displayCameraFragment()
+            }
+        }
+
+    private fun takePhoto() {
+        activity?.let {
+            if (hasPermissions(activity as Context, PERMISSIONS)) {
+                displayCameraFragment()
+            } else {
+                permReqLauncher.launch(
+                    PERMISSIONS
+                )
+            }
+        }
+    }
+
+    // util method
+    private fun hasPermissions(context: Context, permissions: Array<String>): Boolean = permissions.all {
+        ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun displayCameraFragment() {
+        launchQrScanner()
+    }
+
+
+    companion object {
+        private const val CAMERA_PERMISSION_CODE = 100
+        private const val STORAGE_PERMISSION_CODE = 101
+        var PERMISSIONS = arrayOf(
+            android.Manifest.permission.CAMERA,
+        )
     }
 }
