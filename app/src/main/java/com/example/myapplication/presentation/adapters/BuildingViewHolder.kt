@@ -2,12 +2,11 @@ package com.example.myapplication.presentation.adapters
 
 import android.os.Build
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.databinding.ItemRoomBinding
+import com.example.myapplication.databinding.ItemBuildBinding
 import com.example.myapplication.domain.entities.Building
-import com.example.myapplication.domain.entities.Room
 
 class BuildingViewHolder(
-    itemBuildingBinding: ItemRoomBinding
+    itemBuildingBinding: ItemBuildBinding
 ): RecyclerView.ViewHolder(itemBuildingBinding.root) {
     private val binding = itemBuildingBinding
 

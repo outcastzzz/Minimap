@@ -43,9 +43,21 @@
         <action
             android:id="@+id/action_listOfRooms_to_mapFragment"
             app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_listOfRooms_to_fragmentRooms"
+            app:destination="@id/fragmentRooms" />
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.myapplication.presentation.MapFragment"
-        android:label="MapFragment" />
+        android:label="MapFragment" >
+        <action
+            android:id="@+id/action_mapFragment_to_fragmentRooms"
+            app:destination="@id/fragmentRooms" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRooms"
+        android:name="com.example.myapplication.presentation.FragmentRooms"
+        android:label="fragment_rooms"
+        tools:layout="@layout/fragment_rooms" />
 </navigation>

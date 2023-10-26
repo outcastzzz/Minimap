@@ -59,7 +59,6 @@ class ListOfBuildingsFragment: Fragment() {
             val name = "1"
             val title = "abv"
             val build = Building(name = name, title = title)
-
             buildList.add(build)
         }
     }
