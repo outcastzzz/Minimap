@@ -63,6 +63,7 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
 
     implementation("me.dm7.barcodescanner:zbar:1.8.4")
+    implementation("com.github.AnthonyFermin:DropDownView:1.0.1")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

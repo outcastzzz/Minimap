@@ -1,6 +1,5 @@
 package com.example.myapplication.presentation
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,13 +9,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentListOfRoomsBinding
+import com.example.myapplication.domain.entities.Building
 import com.example.myapplication.domain.entities.Room
-import com.example.myapplication.presentation.adapters.RoomItemAdapter
+import com.example.myapplication.presentation.adapters.BuildingItemAdapter
 
-class ListOfRoomsFragment: Fragment() {
+class ListOfBuildingsFragment: Fragment() {
 
-    private lateinit var roomItemAdapter: RoomItemAdapter
-    private val roomList = mutableListOf<Room>()
+    private lateinit var buildingItemAdapter: BuildingItemAdapter
+    private val buildList = mutableListOf<Building>()
 
     private var _binding: FragmentListOfRoomsBinding? = null
     private val binding: FragmentListOfRoomsBinding
@@ -45,8 +45,8 @@ class ListOfRoomsFragment: Fragment() {
     }
 
     private fun setupRecyclerView() {
-        roomItemAdapter = RoomItemAdapter(roomList)
-        binding.rvItemList.adapter = roomItemAdapter
+        buildingItemAdapter = BuildingItemAdapter(buildList)
+        binding.rvItemList.adapter = buildingItemAdapter
         binding.rvItemList.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.VERTICAL,
@@ -58,9 +58,9 @@ class ListOfRoomsFragment: Fragment() {
         for (i in 1..20) {
             val name = "1"
             val title = "abv"
-            val room = Room(name = name, title = title)
+            val build = Building(name = name, title = title)
 
-            roomList.add(room)
+            buildList.add(build)
         }
     }
 

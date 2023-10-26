@@ -1,5 +1,6 @@
 package com.example.myapplication.presentation
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -29,10 +31,12 @@ class WelcomeFragment: Fragment() {
         return binding.root
     }
 
+    @RequiresApi(34)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnFind.setOnClickListener {
             launchListOfRooms()
+            requireActivity().overrideActivityTransition(Activity.OVERRIDE_TRANSITION_OPEN, R.anim.slide_in_bottom, R.anim.slide_out_bottom)
         }
         binding.btnScan.setOnClickListener {
             takePhoto()

@@ -1,6 +1,7 @@
 package com.example.myapplication.domain.repository
 
 import androidx.lifecycle.LiveData
+import com.example.myapplication.domain.entities.Building
 import com.example.myapplication.domain.entities.Point
 import com.example.myapplication.domain.entities.Room
 
@@ -16,4 +17,5 @@ interface MapRepository {
 
     fun loadData()
 
+    fun getListOfBuildings(): LiveData<List<Building>>
 }

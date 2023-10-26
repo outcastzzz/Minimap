@@ -28,14 +28,24 @@
         <action
             android:id="@+id/action_scannerFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_scannerFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/listOfRooms"
-        android:name="com.example.myapplication.presentation.ListOfRoomsFragment"
+        android:name="com.example.myapplication.presentation.ListOfBuildingsFragment"
         android:label="fragment_list_of_rooms"
         tools:layout="@layout/fragment_list_of_rooms" >
         <action
             android:id="@+id/action_listOfRooms_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_listOfRooms_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.myapplication.presentation.MapFragment"
+        android:label="MapFragment" />
 </navigation>
