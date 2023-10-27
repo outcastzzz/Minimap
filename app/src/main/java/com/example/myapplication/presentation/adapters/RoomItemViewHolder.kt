@@ -12,7 +12,7 @@ class RoomItemViewHolder(
 
     fun bind(roomItem: Room) {
         binding.tvName.text = "PPK SSTU"
-        binding.tvName.text = "The Gagarin`s college"
+        binding.tvTitle.text = "The Gagarin`s college"
     }
 
 }

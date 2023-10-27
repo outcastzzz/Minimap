@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentRoomsBinding
 import com.example.myapplication.domain.entities.Room
 import com.example.myapplication.presentation.adapters.RoomItemAdapter
 
+
 class FragmentRooms: Fragment() {
+
+
 
     private lateinit var roomItemAdapter: RoomItemAdapter
     private val roomList = mutableListOf<Room>()
@@ -58,6 +60,5 @@ class FragmentRooms: Fragment() {
             roomList.add(room)
         }
     }
-
 
 }

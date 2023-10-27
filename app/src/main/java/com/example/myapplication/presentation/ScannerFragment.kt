@@ -16,9 +16,6 @@ import me.dm7.barcodescanner.zbar.ZBarScannerView
 
 class ScannerFragment: Fragment(), ZBarScannerView.ResultHandler {
 
-    private val enterAnim = R.anim.slide_in_bottom
-    private val exitAnim = R.anim.slide_out_bottom
-
     private lateinit var zbView: ZBarScannerView
 
     private var _binding: FragmentScannerBinding? = null

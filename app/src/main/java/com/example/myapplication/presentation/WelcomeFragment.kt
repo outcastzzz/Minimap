@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentWelcomeBinding
@@ -36,7 +37,6 @@ class WelcomeFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.btnFind.setOnClickListener {
             launchListOfRooms()
-            requireActivity().overrideActivityTransition(Activity.OVERRIDE_TRANSITION_OPEN, R.anim.slide_in_bottom, R.anim.slide_out_bottom)
         }
         binding.btnScan.setOnClickListener {
             takePhoto()
