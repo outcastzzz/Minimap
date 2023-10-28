@@ -32,7 +32,7 @@ class MapFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvRoom.setOnClickListener {
-            launchListOfRoomsFragment()
+            FragmentRooms().show(requireActivity().supportFragmentManager, "tag")
         }
     }
 
