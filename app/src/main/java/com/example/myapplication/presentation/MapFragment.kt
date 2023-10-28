@@ -36,10 +36,6 @@ class MapFragment: Fragment() {
         }
     }
 
-    private fun launchListOfRoomsFragment() {
-        findNavController().navigate(R.id.action_mapFragment_to_fragmentRooms)
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

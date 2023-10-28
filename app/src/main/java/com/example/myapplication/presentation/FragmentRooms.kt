@@ -15,7 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class FragmentRooms: BottomSheetDialogFragment() {
+class  FragmentRooms: BottomSheetDialogFragment() {
 
 
 
@@ -46,6 +46,8 @@ class FragmentRooms: BottomSheetDialogFragment() {
 
     override fun onStart() {
         super.onStart()
+        populateList()
+        setupRecyclerView()
 
         val density = requireContext().resources.displayMetrics.density
 
@@ -68,16 +70,13 @@ class FragmentRooms: BottomSheetDialogFragment() {
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
                     with(binding) {
                         if(slideOffset > 0) {
-                            layoutCollapsed.alpha = 1 - 2 * slideOffset
                             layoutExpanded.alpha = slideOffset * slideOffset
 
                             if(slideOffset > 0.5) {
-                                layoutCollapsed.visibility = View.GONE
                                 layoutExpanded.visibility = View.VISIBLE
                             }
 
                             if(slideOffset < 0.5 && binding.layoutExpanded.visibility == View.VISIBLE) {
-                                layoutCollapsed.visibility = View.VISIBLE
                                 layoutExpanded.visibility = View.INVISIBLE
                             }
                         }
@@ -92,15 +91,15 @@ class FragmentRooms: BottomSheetDialogFragment() {
         _binding = null
     }
 
-//    private fun setupRecyclerView() {
-//        roomItemAdapter = RoomItemAdapter(roomList)
-//        binding.rvItemList.adapter = roomItemAdapter
-//        binding.rvItemList.layoutManager = LinearLayoutManager(
-//            context,
-//            LinearLayoutManager.VERTICAL,
-//            false
-//        )
-//    }
+    private fun setupRecyclerView() {
+        roomItemAdapter = RoomItemAdapter(roomList)
+        binding.rvItemList.adapter = roomItemAdapter
+        binding.rvItemList.layoutManager = LinearLayoutManager(
+            context,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
+    }
 
     private fun populateList() {
         for (i in 1..10) {

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentListOfRoomsBinding
 import com.example.myapplication.domain.entities.Building
-import com.example.myapplication.domain.entities.Room
 import com.example.myapplication.presentation.adapters.BuildingItemAdapter
 
 class ListOfBuildingsFragment: Fragment() {

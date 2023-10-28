@@ -71,29 +71,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_listOfRooms_to_fragmentRooms"
-            app:destination="@id/fragmentRooms"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.myapplication.presentation.MapFragment"
-        android:label="MapFragment">
-        <action
-            android:id="@+id/action_mapFragment_to_fragmentRooms"
-            app:destination="@id/fragmentRooms"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragmentRooms"
-        android:name="com.example.myapplication.presentation.FragmentRooms"
-        android:label="fragment_rooms"
-        tools:layout="@layout/fragment_rooms" />
+        android:label="MapFragment"/>
 </navigation>
