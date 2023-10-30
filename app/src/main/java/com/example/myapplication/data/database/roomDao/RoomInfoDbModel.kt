@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "room_list")
 data class RoomInfoDbModel (
     @PrimaryKey
-    val id: Int? = 0,
-    val name: String,
+    val id: String? = "",
+    val name: String?,
     val title: String?,
 )

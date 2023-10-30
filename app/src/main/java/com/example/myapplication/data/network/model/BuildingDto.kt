@@ -1,12 +1,11 @@
 package com.example.myapplication.data.network.model
 
-import android.icu.text.CaseMap.Title
 import androidx.room.Entity
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "room_list")
-data class RoomDto(
+@Entity(tableName = "building_list")
+data class BuildingDto (
     @SerializedName("ID")
     @Expose
     val id: String?,
@@ -16,4 +15,7 @@ data class RoomDto(
     @SerializedName("TITLE")
     @Expose
     val title: String?,
+    @SerializedName("IMAGEURL")
+    @Expose
+    val imageUrl: String?
 )

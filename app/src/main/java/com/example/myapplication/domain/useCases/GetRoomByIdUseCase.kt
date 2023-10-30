@@ -8,7 +8,7 @@ class GetRoomByIdUseCase @Inject constructor (
     private val repository: MapRepository
 ) {
 
-    fun getRoomById(roomId: Int): Room {
+    fun getRoomById(roomId: String): Room {
         return repository.getRoomById(roomId)
     }
 
