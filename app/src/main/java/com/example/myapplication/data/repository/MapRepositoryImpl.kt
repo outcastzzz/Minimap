@@ -33,5 +33,4 @@ class MapRepositoryImpl(
     override fun getListOfBuildings(): LiveData<List<Building>> {
         TODO()
     }
-
 }
