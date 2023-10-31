@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0E1127"
-    tools:context=".presentation.WelcomeFragment"
-    >
+    android:background="#00BCD4"
+    tools:context=".presentation.WelcomeFragment">
 
 
     <ImageView
@@ -26,7 +25,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#7667AC"
+        android:backgroundTint="#1E1C20"
         android:minHeight="48dp"
         android:text="Me"
         android:textColor="#FFFFFF"
@@ -42,7 +41,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#7667AC"
+        android:backgroundTint="#1E1C20"
         android:minHeight="48dp"
         android:text="\?"
         android:textColor="#00FFC3"
@@ -58,7 +57,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#7667AC"
+        android:backgroundTint="#1E1C20"
         android:minHeight="48dp"
         android:text="R"
         android:textColor="#09E2FF"
@@ -75,7 +74,7 @@
         android:layout_marginRight="48dp"
         android:width="250dp"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#9670D3"
+        android:backgroundTint="#1E1C20"
         android:ems="10"
         android:gravity="center_vertical"
         android:hint="Введите номер аудитории"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#061C33"
+    android:background="#00BCD4"
     tools:context=".presentation.ListOfBuildingsFragment"
     tools:visibility="visible">
 
@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:listitem="@layout/item_build" >
+            tools:listitem="@layout/item_build">
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -31,8 +31,10 @@
             android:layout_marginBottom="35dp"
             android:width="128dp"
             android:background="@drawable/rounded_button"
-            android:backgroundTint="#847EE1"
+            android:backgroundTint="#3F4342"
             android:text="Back"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#D69C9C"
             app:layout_constraintBottom_toBottomOf="@+id/rv_item_list"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

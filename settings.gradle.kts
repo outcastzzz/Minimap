@@ -12,6 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
         maven {
             setUrl("https://jitpack.io")
+            setUrl("https://dl.bintray.com/s1m0nw1/KtsRunner")
         }
     }
 }

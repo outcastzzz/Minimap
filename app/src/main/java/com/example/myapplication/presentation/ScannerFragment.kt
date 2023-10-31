@@ -1,5 +1,6 @@
 package com.example.myapplication.presentation
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -32,19 +33,10 @@ class ScannerFragment: Fragment(), ZBarScannerView.ResultHandler {
         return zbView
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.btn.setOnClickListener {
-            launchMainScreen()
-        }
-    }
-
     override fun handleResult(result: Result?) {
-        Log.d("ScannerTag", "Result: ${result?.contents}")
+        val str = result?.contents
+        Log.d("MyTag", "$str")
         launchMapFragment()
-    }
-
-    private fun launchMainScreen() {
-        findNavController().navigate(R.id.action_scannerFragment_to_welcomeFragment)
     }
 
     private fun launchMapFragment() {
