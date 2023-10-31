@@ -105,7 +105,7 @@ class  FragmentRooms: BottomSheetDialogFragment() {
         for (i in 1..10) {
             val name = "PPK SSTU"
             val title = "The Gagarin`s college"
-            val room = Room(name = name, title = title)
+            val room = Room(name = name, title = title, id = "")
             roomList.add(room)
         }
     }

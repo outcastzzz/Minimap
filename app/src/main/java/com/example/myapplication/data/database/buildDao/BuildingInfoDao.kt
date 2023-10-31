@@ -12,10 +12,10 @@ import com.example.myapplication.domain.entities.Building
 interface BuildingInfoDao {
 
 //    @Query()
-    fun getListOfBuildings(): LiveData<List<Building>>
+//    fun getListOfBuildings(): LiveData<List<Building>>
 
 //    @Query()
-    fun getInfoAboutRoom(id: Int): LiveData<BuildingInfoDbModel>
+//    fun getInfoAboutRoom(id: Int): LiveData<BuildingInfoDbModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBuildingList(buildList: List<BuildingInfoDbModel>)

@@ -9,11 +9,11 @@ import androidx.room.Query
 @Dao
 interface RoomInfoDao {
 
-    @Query()
-    fun getRoomList(): LiveData<List<RoomInfoDbModel>>
+//    @Query()
+//    fun getRoomList(): LiveData<List<RoomInfoDbModel>>
 
-    @Query()
-    fun getInfoAboutRoom(id: Int): LiveData<RoomInfoDbModel>
+//    @Query()
+//    fun getInfoAboutRoom(id: Int): LiveData<RoomInfoDbModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRoomList(roomList: List<RoomInfoDbModel>)
