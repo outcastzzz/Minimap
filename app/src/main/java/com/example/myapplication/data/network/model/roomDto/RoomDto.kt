@@ -1,4 +1,4 @@
-package com.example.myapplication.data.network.model
+package com.example.myapplication.data.network.model.roomDto
 
 import android.icu.text.CaseMap.Title
 import androidx.room.Entity

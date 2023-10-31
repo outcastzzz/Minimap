@@ -24,4 +24,8 @@ class MapRepositoryImpl(
     override fun getListOfBuildings(): LiveData<List<Building>> {
         TODO()
     }
+
+    override fun getMapImage(buildingId: Int): String {
+        TODO()
+    }
 }

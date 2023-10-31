@@ -11,11 +11,11 @@ import com.example.myapplication.domain.entities.Building
 @Dao
 interface BuildingInfoDao {
 
-//    @Query()
-//    fun getListOfBuildings(): LiveData<List<Building>>
+    @Query("SELECT * FROM building_list ORDER BY id DESC")
+    fun getListOfBuildings(): LiveData<List<Building>>
 
-//    @Query()
-//    fun getInfoAboutRoom(id: Int): LiveData<BuildingInfoDbModel>
+    @Query("SELECT * FROM building_list WHERE name == name LIMIT 1")
+    fun getInfoAboutRoom(id: Int): LiveData<BuildingInfoDbModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBuildingList(buildList: List<BuildingInfoDbModel>)

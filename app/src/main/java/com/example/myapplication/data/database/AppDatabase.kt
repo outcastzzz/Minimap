@@ -6,11 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.myapplication.data.database.buildDao.BuildingInfoDao
 import com.example.myapplication.data.database.buildDao.BuildingInfoDbModel
+import com.example.myapplication.data.database.mapDao.MapInfoDao
+import com.example.myapplication.data.database.mapDao.MapInfoDbModel
 import com.example.myapplication.data.database.roomDao.RoomInfoDao
 import com.example.myapplication.data.database.roomDao.RoomInfoDbModel
 
 @Database(
-    entities = [RoomInfoDbModel::class, BuildingInfoDbModel::class],
+    entities = [RoomInfoDbModel::class, BuildingInfoDbModel::class, MapInfoDbModel::class],
     version = 2,
     exportSchema = false
 )
@@ -41,5 +43,6 @@ abstract class AppDatabase: RoomDatabase() {
 
     abstract fun roomInfoDao(): RoomInfoDao
     abstract fun buildingInfoDao(): BuildingInfoDao
+    abstract fun mapInfoDao(): MapInfoDao
 
 }
