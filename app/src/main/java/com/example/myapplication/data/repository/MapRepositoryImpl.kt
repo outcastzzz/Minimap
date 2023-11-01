@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import com.example.myapplication.domain.entities.Building
 import com.example.myapplication.domain.entities.Room
 import com.example.myapplication.domain.repository.MapRepository
+import javax.inject.Inject
 
-class MapRepositoryImpl(
+class MapRepositoryImpl @Inject constructor(
 
 ): MapRepository {
 
