@@ -4,30 +4,23 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.bumptech.glide.Glide
+import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemBuildBinding
 import com.example.myapplication.domain.entities.Building
 import com.example.myapplication.domain.entities.Room
 
 
-class BuildingItemAdapter(
-    private val buildList: MutableList<Building>,
-    private val context: Context
-): ListAdapter<Building, BuildingViewHolder>(BuildingItemDiffCallback) {
+class BuildingItemAdapter: ListAdapter<Building, BuildingViewHolder>(BuildingItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildingViewHolder {
-        val binding = ItemBuildBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return BuildingViewHolder(binding)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_build, parent, false)
+        return BuildingViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: BuildingViewHolder, position: Int) {
-        val buildItem = buildList[position]
-        holder.binding.apply {
-            tvName.text = "${buildItem.name}"
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return buildList.size
+        holder.bind(
+            getItem(position)
+        )
     }
 }

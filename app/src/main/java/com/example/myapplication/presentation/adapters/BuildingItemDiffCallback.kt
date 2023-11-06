@@ -5,7 +5,7 @@ import com.example.myapplication.domain.entities.Building
 import com.example.myapplication.domain.entities.Room
 
 
-object BuildingItemDiffCallback: DiffUtil.ItemCallback<Building>() {
+class BuildingItemDiffCallback: DiffUtil.ItemCallback<Building>() {
 
     override fun areItemsTheSame(oldItem: Building, newItem: Building): Boolean {
         return oldItem.id == newItem.id

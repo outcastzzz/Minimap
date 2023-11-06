@@ -7,7 +7,7 @@ import net.sourceforge.zbar.Image
 
 interface MapRepository {
 
-    fun getListOfRooms(): LiveData<List<Room>>
+    fun getListOfRooms(buildingId: Int): LiveData<List<Room>>
 
     fun getRoomById(roomId: String): Room
 

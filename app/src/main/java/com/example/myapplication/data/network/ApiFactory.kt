@@ -1,16 +1,26 @@
 package com.example.myapplication.data.network
 
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {
+    private const val BASE_URL = ""
 
-    private const val BASE_URL = "file:///C:/Users/Студент/Downloads/test.json"
+    private fun setupInterceptor(): OkHttpClient {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
 
-    private val retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(BASE_URL)
-        .build()
+        return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
+    }
 
-    val apiService: ApiService = retrofit.create(ApiService::class.java)
+    private val client = setupInterceptor()
+
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://myjsons.com/").client(client)
+        .addConverterFactory(GsonConverterFactory.create()).build()
+    val buildingApi = retrofit.create(ApiService::class.java)
 }

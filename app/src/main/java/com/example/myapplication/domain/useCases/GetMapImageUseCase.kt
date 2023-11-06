@@ -1,11 +1,9 @@
 package com.example.myapplication.domain.useCases
 
-import androidx.lifecycle.LiveData
 import com.example.myapplication.domain.repository.MapRepository
-import net.sourceforge.zbar.Image
 import javax.inject.Inject
 
-class getMapImageUseCase @Inject constructor(
+class GetMapImageUseCase @Inject constructor(
     private val repository: MapRepository
 ) {
 

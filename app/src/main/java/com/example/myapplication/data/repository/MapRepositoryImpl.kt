@@ -10,7 +10,7 @@ class MapRepositoryImpl @Inject constructor(
 
 ): MapRepository {
 
-    override fun getListOfRooms(): LiveData<List<Room>> {
+    override fun getListOfRooms(buildingId: Int): LiveData<List<Room>> {
         TODO()
     }
 

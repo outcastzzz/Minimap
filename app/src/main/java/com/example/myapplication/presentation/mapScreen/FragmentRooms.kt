@@ -1,15 +1,10 @@
-package com.example.myapplication.presentation
+package com.example.myapplication.presentation.mapScreen
 
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
-import android.util.Xml
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentRoomsBinding
@@ -17,8 +12,6 @@ import com.example.myapplication.domain.entities.Room
 import com.example.myapplication.presentation.adapters.RoomItemAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import java.lang.reflect.Field
-import java.text.Format
 
 
 class  FragmentRooms: BottomSheetDialogFragment() {
@@ -111,7 +104,7 @@ class  FragmentRooms: BottomSheetDialogFragment() {
         for (i in 1..10) {
             val name = "name"
             val title = "title"
-            val room = Room(name = name, title = title, id = "")
+            val room = Room(name = name, id = "")
             roomList.add(room)
         }
     }

@@ -9,8 +9,8 @@ class GetListOfRoomsUseCase @Inject constructor(
     private val repository: MapRepository
 ) {
 
-    fun getListOfRoom(): LiveData<List<Room>> {
-        return repository.getListOfRooms()
+    fun getListOfRoom(buildingId: Int): LiveData<List<Room>> {
+        return repository.getListOfRooms(buildingId)
     }
 
 }

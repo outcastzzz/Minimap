@@ -1,22 +1,18 @@
 package com.example.myapplication.data.network
 
-import com.example.myapplication.data.network.model.BuildingDto
-import com.example.myapplication.data.network.model.MapDto
-import com.example.myapplication.data.network.model.RoomDto
-import retrofit2.Call
+import com.example.myapplication.domain.entities.Building
+import com.example.myapplication.domain.entities.Map
 import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("build")
-    suspend fun getBuildingInfo(): BuildingDto
+    @GET("")
+    suspend fun getAllBuildings(): BuildingsList
 
-    @GET("roomInfo")
-    suspend fun getRoomInfo(): RoomDto
+    @GET("")
+    suspend fun getMapImage(buildingId: Int): Map
 
-    @GET("mapInfo")
-    suspend fun getMapInfo(): MapDto
+    @GET("")
+    suspend fun getAllRooms(buildingId: Int): RoomList
 
 }
