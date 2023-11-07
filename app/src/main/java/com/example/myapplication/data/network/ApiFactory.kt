@@ -20,7 +20,7 @@ object ApiFactory {
     private val client = setupInterceptor()
 
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://myjsons.com/").client(client)
+        .baseUrl(BASE_URL).client(client)
         .addConverterFactory(GsonConverterFactory.create()).build()
     val buildingApi = retrofit.create(ApiService::class.java)
 }
