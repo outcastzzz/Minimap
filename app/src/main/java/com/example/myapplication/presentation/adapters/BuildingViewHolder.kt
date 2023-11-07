@@ -13,6 +13,6 @@ class BuildingViewHolder(
     private val binding = ItemBuildBinding.bind(view)
 
     fun bind(building: Building) = with(binding) {
-        tvName.text = building.name
+        tvName.text = building.build
     }
 }

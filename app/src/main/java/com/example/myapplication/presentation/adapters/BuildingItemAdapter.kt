@@ -10,7 +10,7 @@ import com.example.myapplication.domain.entities.Building
 import com.example.myapplication.domain.entities.Room
 
 
-class BuildingItemAdapter: ListAdapter<Building, BuildingViewHolder>(BuildingItemDiffCallback()) {
+class BuildingItemAdapter(private val buildings: List<Building>): ListAdapter<Building, BuildingViewHolder>(BuildingItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildingViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -20,7 +20,11 @@ class BuildingItemAdapter: ListAdapter<Building, BuildingViewHolder>(BuildingIte
 
     override fun onBindViewHolder(holder: BuildingViewHolder, position: Int) {
         holder.bind(
-            getItem(position)
+            buildings[position]
         )
+    }
+
+    override fun getItemCount(): Int {
+        return buildings.size
     }
 }

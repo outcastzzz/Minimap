@@ -14,6 +14,7 @@ import com.example.myapplication.presentation.adapters.BuildingItemAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ListOfBuildingsFragment: Fragment() {
 
@@ -34,21 +35,16 @@ class ListOfBuildingsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView()
         CoroutineScope(Dispatchers.IO).launch {
-            val list = ApiFactory.buildingApi.getAllBuildings()
-            requireActivity().runOnUiThread {
-                binding.apply {
-                    buildingItemAdapter.submitList(list.buildings)
+            val response= ApiFactory.buildingApi.getAllBuildings()
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+                    val buildings = response.body()
+                    val adapter = BuildingItemAdapter(buildings!!)
+                    binding.rvItemList.adapter = adapter
                 }
             }
         }
-    }
-    
-    private fun setupRecyclerView() {
-        buildingItemAdapter = BuildingItemAdapter()
-        binding.rvItemList.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
-        binding.rvItemList.adapter = buildingItemAdapter
     }
 
     override fun onDestroyView() {
