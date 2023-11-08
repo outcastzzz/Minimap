@@ -11,6 +11,7 @@ import com.example.myapplication.R
 import com.example.myapplication.data.network.ApiFactory
 import com.example.myapplication.databinding.FragmentListOfRoomsBinding
 import com.example.myapplication.presentation.adapters.BuildingItemAdapter
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,10 +41,13 @@ class ListOfBuildingsFragment: Fragment() {
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     val buildings = response.body()
-                    val adapter = BuildingItemAdapter(buildings!!)
+                    val adapter = BuildingItemAdapter(listOf(buildings!!))
                     binding.rvItemList.adapter = adapter
                 }
             }
+        }
+        binding.button.setOnClickListener {
+            launchWelcomeFragment()
         }
     }
 

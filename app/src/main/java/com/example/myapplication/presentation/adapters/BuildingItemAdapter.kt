@@ -19,9 +19,8 @@ class BuildingItemAdapter(private val buildings: List<Building>): ListAdapter<Bu
     }
 
     override fun onBindViewHolder(holder: BuildingViewHolder, position: Int) {
-        holder.bind(
-            buildings[position]
-        )
+        val building = buildings[position]
+        holder.buildTv.text = building.build
     }
 
     override fun getItemCount(): Int {
