@@ -11,11 +11,12 @@
     <LinearLayout
         android:id="@+id/layout_top"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:background="#00BCD4"
         android:baselineAligned="false"
         android:gravity="center"
         android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -28,7 +29,7 @@
             android:textAlignment="center"
             app:backgroundTint="#1E1C20"
             app:iconifiedByDefault="false"
-            app:queryHint="Enter the room" />
+            app:queryHint="Enter the room..." />
 
     </LinearLayout>
 

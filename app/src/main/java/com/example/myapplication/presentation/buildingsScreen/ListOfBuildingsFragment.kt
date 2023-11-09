@@ -58,7 +58,7 @@ class ListOfBuildingsFragment: Fragment() {
                     }
                 }
             } catch (e: CancellationException) {
-                Log.d("aon", "askjdbnaois")
+                Log.d("ApiCancelled", "${e.message}")
             }
 
         }
