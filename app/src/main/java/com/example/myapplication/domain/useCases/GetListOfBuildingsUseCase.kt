@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetListOfBuildingsUseCase @Inject constructor(
     private val repository: MapRepository
 ) {
-    fun getListOfBuildings(): LiveData<List<Building>> {
+    fun getListOfBuildings(): List<Building> {
         return repository.getListOfBuildings()
     }
 }

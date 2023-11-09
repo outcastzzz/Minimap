@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00BCD4"
-    tools:context=".presentation.ListOfBuildingsFragment"
+    tools:context=".presentation.buildingsScreen.ListOfBuildingsFragment"
     tools:visibility="visible">
 
         <androidx.recyclerview.widget.RecyclerView

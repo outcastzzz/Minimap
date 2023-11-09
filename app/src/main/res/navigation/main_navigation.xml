@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/listOfRooms"
-        android:name="com.example.myapplication.presentation.ListOfBuildingsFragment"
+        android:name="com.example.myapplication.presentation.buildingsScreen.ListOfBuildingsFragment"
         android:label="fragment_list_of_rooms"
         tools:layout="@layout/fragment_list_of_rooms">
         <action

@@ -13,7 +13,7 @@ interface MapRepository {
 
     fun loadData()
 
-    fun getListOfBuildings(): LiveData<List<Building>>
+    fun getListOfBuildings(): List<Building>
 
     fun getMapImage(buildingId: Int): String
 }

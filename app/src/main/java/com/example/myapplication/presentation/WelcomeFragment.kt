@@ -96,8 +96,6 @@ class WelcomeFragment: Fragment() {
 
 
     companion object {
-        private const val CAMERA_PERMISSION_CODE = 100
-        private const val STORAGE_PERMISSION_CODE = 101
         var PERMISSIONS = arrayOf(
             android.Manifest.permission.CAMERA,
         )

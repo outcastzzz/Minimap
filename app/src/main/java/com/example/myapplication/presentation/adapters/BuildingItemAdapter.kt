@@ -1,16 +1,21 @@
 package com.example.myapplication.presentation.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.myapplication.R
-import com.example.myapplication.databinding.ItemBuildBinding
 import com.example.myapplication.domain.entities.Building
-import com.example.myapplication.domain.entities.Room
 
 
-class BuildingItemAdapter(private val buildings: List<Building>): ListAdapter<Building, BuildingViewHolder>(BuildingItemDiffCallback()) {
+class BuildingItemAdapter(
+    private val buildings: List<String>,
+    private val listener: OnItemClickListener
+): ListAdapter<Building, BuildingViewHolder>(BuildingItemDiffCallback()) {
+
+
+    interface OnItemClickListener {
+        fun onItemClick(building: String)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildingViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -20,7 +25,10 @@ class BuildingItemAdapter(private val buildings: List<Building>): ListAdapter<Bu
 
     override fun onBindViewHolder(holder: BuildingViewHolder, position: Int) {
         val building = buildings[position]
-        holder.buildTv.text = building.build
+        holder.buildTv.text = building
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(building)
+        }
     }
 
     override fun getItemCount(): Int {

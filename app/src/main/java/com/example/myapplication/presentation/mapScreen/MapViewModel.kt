@@ -12,13 +12,13 @@ class MapViewModel @Inject constructor(
     private val application: Application
 ): AndroidViewModel(application) {
 
-    private val buildingId: Int = 0
-
-    private val mapImage = getMapImageUseCase.getMapImage(buildingId)
-
-    private fun setImage() {
-        val id = application.applicationContext.resources.getIdentifier(mapImage, "drawable", application.packageName)
-        val draw: Drawable? = ContextCompat.getDrawable(application.applicationContext, id)
-    }
+//    private val buildingId: Int = 0
+//
+//    private val mapImage = getMapImageUseCase.getMapImage(buildingId)
+//
+//    private fun setImage() {
+//        val id = application.applicationContext.resources.getIdentifier(mapImage, "drawable", application.packageName)
+//        val draw: Drawable? = ContextCompat.getDrawable(application.applicationContext, id)
+//    }
 
 }

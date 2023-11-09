@@ -6,9 +6,8 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET("Fp1KrZ")
+    @GET("3uea1Q")
     suspend fun getAllBuildings(): retrofit2.Response<Building>
-
     @GET("")
     suspend fun getMapImage(buildingId: Int): Map
 

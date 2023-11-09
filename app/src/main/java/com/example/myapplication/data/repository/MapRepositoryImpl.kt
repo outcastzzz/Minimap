@@ -30,7 +30,7 @@ class MapRepositoryImpl @Inject constructor(
         TODO()
     }
 
-    override fun getListOfBuildings(): LiveData<List<Building>> {
+    override fun getListOfBuildings(): List<Building> {
         TODO()
     }
 
