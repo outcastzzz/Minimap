@@ -20,7 +20,7 @@ interface DataModule {
         @Provides
         @ApplicationScope
         fun provideApiService(): ApiService {
-            return ApiFactory.buildingApi
+            return ApiFactory.apiService
         }
 
     }

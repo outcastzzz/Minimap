@@ -6,16 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.example.myapplication.data.network.ApiFactory
 import com.example.myapplication.databinding.FragmentListOfRoomsBinding
+import com.example.myapplication.presentation.ViewModelFactory
 import com.example.myapplication.presentation.adapters.BuildingItemAdapter
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.IllegalStateException
+import javax.inject.Inject
 
 class ListOfBuildingsFragment: Fragment() {
 
@@ -24,6 +29,14 @@ class ListOfBuildingsFragment: Fragment() {
     private var _binding: FragmentListOfRoomsBinding? = null
     private val binding: FragmentListOfRoomsBinding
         get() = _binding ?: throw RuntimeException("FragmentListOfRooms == null")
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        println("Handle exception: ${throwable.message}")
+    }
+    private val scope = CoroutineScope(Dispatchers.Main + coroutineExceptionHandler)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,24 +56,20 @@ class ListOfBuildingsFragment: Fragment() {
     }
 
     private fun setupRecyclerView() {
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val response = ApiFactory.buildingApi.getAllBuildings()
-                withContext(Dispatchers.Main) {
-                    if (response.isSuccessful && response.body() != null) {
-                        val buildings = response.body()?.build
-                        val adapter = BuildingItemAdapter(buildings!!, object: BuildingItemAdapter.OnItemClickListener {
-                            override fun onItemClick(building: String) {
-                                launchMapFragment()
-                            }
-                        })
-                        binding.rvItemList.adapter = adapter
-                    }
+        scope.launch {
+            val response = ApiFactory.apiService.getAllBuildings()
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful && response.body() != null) {
+                    val buildings = response.body()?.build
+                    val adapter = BuildingItemAdapter(buildings!!, object: BuildingItemAdapter.OnItemClickListener {
+                        override fun onItemClick(building: String) {
+                            launchMapFragment()
+                        }
+                    })
+                    binding.rvItemList.adapter = adapter
                 }
-            } catch (e: CancellationException) {
-                Log.d("ApiCancelled", "${e.message}")
             }
-
+            throw IllegalStateException("Child coroutine failed")
         }
     }
 
