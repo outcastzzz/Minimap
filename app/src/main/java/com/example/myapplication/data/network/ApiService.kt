@@ -2,6 +2,7 @@ package com.example.myapplication.data.network
 
 import com.example.myapplication.domain.entities.Building
 import com.example.myapplication.domain.entities.Map
+import com.example.myapplication.domain.entities.Room
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
@@ -13,5 +14,8 @@ interface ApiService {
 
     @GET("-UEfMw")
     suspend fun getMapImage(): Map
+
+    @GET("")
+    suspend fun getAllRooms(): Response<Room>
 
 }

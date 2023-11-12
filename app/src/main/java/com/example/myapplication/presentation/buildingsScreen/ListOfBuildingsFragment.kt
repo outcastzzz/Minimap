@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.example.myapplication.data.network.ApiFactory
@@ -24,8 +23,6 @@ import javax.inject.Inject
 
 class ListOfBuildingsFragment: Fragment() {
 
-    private lateinit var buildingItemAdapter: BuildingItemAdapter
-
     private var _binding: FragmentListOfRoomsBinding? = null
     private val binding: FragmentListOfRoomsBinding
         get() = _binding ?: throw RuntimeException("FragmentListOfRooms == null")
@@ -36,7 +33,7 @@ class ListOfBuildingsFragment: Fragment() {
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         println("Handle exception: ${throwable.message}")
     }
-    private val scope = CoroutineScope(Dispatchers.Main + coroutineExceptionHandler)
+    private val scope = CoroutineScope(Dispatchers.IO + coroutineExceptionHandler)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +41,6 @@ class ListOfBuildingsFragment: Fragment() {
     ): View {
         _binding = FragmentListOfRoomsBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

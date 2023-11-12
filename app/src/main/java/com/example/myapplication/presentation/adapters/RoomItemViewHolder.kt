@@ -1,18 +1,16 @@
 package com.example.myapplication.presentation.adapters
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ItemRoomBinding
 import com.example.myapplication.domain.entities.Room
 
 class RoomItemViewHolder(
-    itemRoomBinding: ItemRoomBinding
-): RecyclerView.ViewHolder(itemRoomBinding.root) {
+    view: View
+): RecyclerView.ViewHolder(view) {
 
-    private val binding = itemRoomBinding
+    private val binding = ItemRoomBinding.bind(view)
 
-    fun bind(roomItem: Room) {
-        binding.tvName.text = "PPK SSTU"
-        binding.tvTitle.text = "The Gagarin`s college"
-    }
+    val roomTv = binding.tvName
 
 }

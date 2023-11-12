@@ -1,56 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BCD4"
-    android:backgroundTintMode="add">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- В данном layout содержится верхняя часть, которая не будет изменяться при изменении состояния
-    В данном кейсе его можно заменить на TextView с compound drawable, но я оставлю LinearLayout для наглядности-->
-    <LinearLayout
-        android:id="@+id/layout_top"
+    <!-- Your other views here -->
+
+    <FrameLayout
+        android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00BCD4"
-        android:baselineAligned="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_peekHeight="100dp"
+        app:behavior_hideable="true">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
+        <!-- Your bottom sheet content here -->
+
+
+        <SearchView
+            android:id="@+id/search_item"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:backgroundTintMode="screen"
-            android:textAlignment="center"
-            app:backgroundTint="#1E1C20"
-            app:iconifiedByDefault="false"
-            app:queryHint="Enter the room..." />
+            android:layout_height="match_parent" >
 
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_item_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </SearchView>
 
-    <!-- В данном layout содержится разметка для collapsed состояния фрагмента -->
 
-    <!-- В данном layout содержится разметка для развёрнутого состояния фрагмента
-    Изначально она находится в состоянии invisible и располагается под layout_top как и layout_collapsed-->
-    <LinearLayout
-        android:id="@+id/layout_expanded"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#00BCD4"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_top">
+    </FrameLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_item_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

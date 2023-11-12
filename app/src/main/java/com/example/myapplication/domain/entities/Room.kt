@@ -1,6 +1,6 @@
 package com.example.myapplication.domain.entities
 
 data class Room (
-    val name: String?,
-    val id: String? = "",
+    val room: List<String>,
+    val id: Int
 )

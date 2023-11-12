@@ -1,31 +1,28 @@
 package com.example.myapplication.presentation.mapScreen
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.data.network.ApiFactory
 import com.example.myapplication.databinding.FragmentMapBinding
 import com.example.myapplication.presentation.MinimapApp
 import com.example.myapplication.presentation.ViewModelFactory
-import com.google.gson.Gson
+import com.example.myapplication.presentation.adapters.RoomItemAdapter
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import java.lang.IllegalStateException
 import javax.inject.Inject
+import kotlin.IllegalStateException
 
 class MapFragment: Fragment() {
 
@@ -41,7 +38,7 @@ class MapFragment: Fragment() {
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         println("Handle exception: ${throwable.message}")
     }
-    private val scope = CoroutineScope(Dispatchers.Main + coroutineExceptionHandler)
+    private val scope = CoroutineScope(Dispatchers.IO + coroutineExceptionHandler)
 
     override fun onAttach(context: Context) {
         component.inject(this)
@@ -61,17 +58,6 @@ class MapFragment: Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this, viewModelFactory)[MapViewModel::class.java]
-        binding.tvRoom.setOnClickListener {
-            FragmentRooms().show(requireActivity().supportFragmentManager, "tag")
-        }
-        binding.buttonMe.setOnClickListener {
-            setupMap()
-        }
-    }
-
     private fun setupMap() {
         scope.launch {
             val svgData = ApiFactory.apiService.getMapImage()
@@ -79,7 +65,84 @@ class MapFragment: Fragment() {
             Glide.with(this@MapFragment)
                 .load(svgString)
                 .into(binding.ivMap)
-            throw IllegalStateException("Child coroutine failed")
+        }
+    }
+
+   // <!-- ------------------------------------------------------------------------------------ -->
+
+    val recyclerView: RecyclerView = binding.rvItemList
+
+    override fun onStart() {
+        super.onStart()
+        setupRecyclerView()
+        viewModel = ViewModelProvider(this, viewModelFactory)[MapViewModel::class.java]
+        binding.tvRoom.setOnClickListener {
+            FragmentRooms().show(requireActivity().supportFragmentManager, "tag")
+        }
+        binding.buttonMe.setOnClickListener {
+            setupMap()
+        }
+
+        val bottomSheet = binding.bottomSheet
+        val behavior = BottomSheetBehavior.from(bottomSheet)
+
+        behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+
+        behavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+
+            }
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                with(binding) {
+                    if (slideOffset > 0) {
+                        searchItem.alpha = slideOffset * slideOffset
+                    }
+                    if (slideOffset > 0.5) {
+                        searchItem.visibility = View.VISIBLE
+                    }
+                    if(slideOffset < 0.5 && binding.searchItem.visibility == View.VISIBLE) {
+                        searchItem.visibility = View.INVISIBLE
+                    }
+                }
+            }
+        })
+    }
+
+    private fun setupRecyclerView() {
+        scope.launch {
+            val response = ApiFactory.apiService.getAllRooms()
+            withContext(Dispatchers.Main) {
+                if(response.isSuccessful && response.body() != null) {
+                    val rooms = response.body()?.room
+                    val adapter = RoomItemAdapter(
+                        rooms!!,
+                        object: RoomItemAdapter.OnItemClickListener {
+                        override fun onItemClick(room: String) {
+                        }
+                    })
+                    recyclerView.adapter = adapter
+                    val searchView: SearchView = binding.searchItem
+                    searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            return false
+                        }
+
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                               val filteredItems = rooms.filter {
+                                   it.contains(newText ?: "", ignoreCase = true)
+                               }
+                            recyclerView.adapter = RoomItemAdapter(
+                                filteredItems,
+                                object: RoomItemAdapter.OnItemClickListener {
+                                override fun onItemClick(room: String) {
+
+                                }
+                            })
+                            return false
+                        }
+                    })
+                }
+            }
         }
     }
 
