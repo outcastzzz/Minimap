@@ -1,7 +1,8 @@
-package com.example.myapplication.presentation.mapScreen
+package com.example.myapplication.presentation
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,42 +13,37 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplication.data.network.ApiFactory
 import com.example.myapplication.databinding.FragmentMapBinding
-import com.example.myapplication.presentation.MinimapApp
-import com.example.myapplication.presentation.ViewModelFactory
 import com.example.myapplication.presentation.adapters.RoomItemAdapter
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.example.myapplication.presentation.mapScreen.MapViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import kotlin.IllegalStateException
 
 class MapFragment: Fragment() {
-
-    private lateinit var viewModel: MapViewModel
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
 
     private val component by lazy {
         (requireActivity().application as MinimapApp).component
     }
+
+//    val recyclerView: RecyclerView = binding.rvItemList
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         println("Handle exception: ${throwable.message}")
     }
     private val scope = CoroutineScope(Dispatchers.IO + coroutineExceptionHandler)
 
+    private var _binding: FragmentMapBinding? = null
+    private val binding: FragmentMapBinding
+        get() = _binding ?: throw RuntimeException("FragmentMapBinding == null")
+
+
     override fun onAttach(context: Context) {
         component.inject(this)
         super.onAttach(context)
     }
-
-    private var _binding: FragmentMapBinding? = null
-    private val binding: FragmentMapBinding
-        get() = _binding ?: throw RuntimeException("FragmentMapBinding == null")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,6 +54,14 @@ class MapFragment: Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        binding.button1.setOnClickListener {
+            setupMap()
+        }
+    }
+
     private fun setupMap() {
         scope.launch {
             val svgData = ApiFactory.apiService.getMapImage()
@@ -65,47 +69,8 @@ class MapFragment: Fragment() {
             Glide.with(this@MapFragment)
                 .load(svgString)
                 .into(binding.ivMap)
+            Log.i("SwitchImg", "Switched")
         }
-    }
-
-   // <!-- ------------------------------------------------------------------------------------ -->
-
-    val recyclerView: RecyclerView = binding.rvItemList
-
-    override fun onStart() {
-        super.onStart()
-        setupRecyclerView()
-        viewModel = ViewModelProvider(this, viewModelFactory)[MapViewModel::class.java]
-        binding.tvRoom.setOnClickListener {
-            FragmentRooms().show(requireActivity().supportFragmentManager, "tag")
-        }
-        binding.buttonMe.setOnClickListener {
-            setupMap()
-        }
-
-        val bottomSheet = binding.bottomSheet
-        val behavior = BottomSheetBehavior.from(bottomSheet)
-
-        behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-
-        behavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-
-            }
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                with(binding) {
-                    if (slideOffset > 0) {
-                        searchItem.alpha = slideOffset * slideOffset
-                    }
-                    if (slideOffset > 0.5) {
-                        searchItem.visibility = View.VISIBLE
-                    }
-                    if(slideOffset < 0.5 && binding.searchItem.visibility == View.VISIBLE) {
-                        searchItem.visibility = View.INVISIBLE
-                    }
-                }
-            }
-        })
     }
 
     private fun setupRecyclerView() {
@@ -120,7 +85,7 @@ class MapFragment: Fragment() {
                         override fun onItemClick(room: String) {
                         }
                     })
-                    recyclerView.adapter = adapter
+                    binding.rvItemList.adapter = adapter
                     val searchView: SearchView = binding.searchItem
                     searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
                         override fun onQueryTextSubmit(query: String?): Boolean {
@@ -131,7 +96,7 @@ class MapFragment: Fragment() {
                                val filteredItems = rooms.filter {
                                    it.contains(newText ?: "", ignoreCase = true)
                                }
-                            recyclerView.adapter = RoomItemAdapter(
+                            binding.rvItemList.adapter = RoomItemAdapter(
                                 filteredItems,
                                 object: RoomItemAdapter.OnItemClickListener {
                                 override fun onItemClick(room: String) {

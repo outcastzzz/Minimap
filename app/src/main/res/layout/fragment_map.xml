@@ -1,107 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00BCD4"
-    tools:context=".presentation.WelcomeFragment">
+    tools:context=".presentation.MapFragment"
+    tools:visibility="visible">
 
 
     <ImageView
-        android:id="@+id/ivMap"
+        android:id="@+id/iv_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/house_rooms" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/house_rooms"
+        android:contentDescription="map" />
 
-    <Button
-        android:id="@+id/buttonMe"
-        android:layout_width="60dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#1E1C20"
-        android:minHeight="48dp"
-        android:text="Me"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonBack"
-        android:layout_width="60dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#1E1C20"
-        android:minHeight="48dp"
-        android:text="\?"
-        android:textColor="#00FFC3"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRooms" />
-
-    <Button
-        android:id="@+id/buttonRooms"
-        android:layout_width="60dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#1E1C20"
-        android:minHeight="48dp"
-        android:text="R"
-        android:textColor="#09E2FF"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonMe" />
-
-    <TextView
-        android:id="@+id/tvRoom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="48dp"
-        android:width="250dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="#1E1C20"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:hint="Введите номер аудитории"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#F3F3F3"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ivMap" />
-
-    <FrameLayout
-        android:id="@+id/bottomSheet"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:behavior_hideable="true"
-        app:behavior_peekHeight="100dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="70dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="670dp"
+            android:layout_marginEnd="47dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#4E90F3"
+            android:text="A" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="70dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="670dp"
+            android:layout_marginEnd="164dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#4E90F3"
+            android:text="A" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="70dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="670dp"
+            android:layout_marginEnd="281dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#4E90F3"
+            android:text="A" />
 
         <SearchView
             android:id="@+id/search_item"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#8FB5ED">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_item_list"
@@ -109,7 +72,6 @@
                 android:layout_height="match_parent" />
         </SearchView>
 
-
-    </FrameLayout>
+    </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

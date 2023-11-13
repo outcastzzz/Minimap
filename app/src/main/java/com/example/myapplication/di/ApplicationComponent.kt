@@ -2,7 +2,7 @@ package com.example.myapplication.di
 
 import android.app.Application
 import com.example.myapplication.presentation.MinimapApp
-import com.example.myapplication.presentation.mapScreen.MapFragment
+import com.example.myapplication.presentation.MapFragment
 import dagger.BindsInstance
 import dagger.Component
 

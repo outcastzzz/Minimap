@@ -25,7 +25,7 @@ class ListOfBuildingsFragment: Fragment() {
 
     private var _binding: FragmentListOfRoomsBinding? = null
     private val binding: FragmentListOfRoomsBinding
-        get() = _binding ?: throw RuntimeException("FragmentListOfRooms == null")
+        get() = _binding ?: throw RuntimeException("FragmentListOfBuildings == null")
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -36,7 +36,8 @@ class ListOfBuildingsFragment: Fragment() {
     private val scope = CoroutineScope(Dispatchers.IO + coroutineExceptionHandler)
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentListOfRoomsBinding.inflate(inflater, container, false)
@@ -57,7 +58,9 @@ class ListOfBuildingsFragment: Fragment() {
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful && response.body() != null) {
                     val buildings = response.body()?.build
-                    val adapter = BuildingItemAdapter(buildings!!, object: BuildingItemAdapter.OnItemClickListener {
+                    val adapter = BuildingItemAdapter(
+                        buildings!!,
+                        object: BuildingItemAdapter.OnItemClickListener {
                         override fun onItemClick(building: String) {
                             launchMapFragment()
                         }
@@ -69,16 +72,16 @@ class ListOfBuildingsFragment: Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     private fun launchWelcomeFragment() {
         findNavController().navigate(R.id.action_listOfRooms_to_welcomeFragment)
     }
 
     private fun launchMapFragment() {
         findNavController().navigate(R.id.action_listOfRooms_to_mapFragment)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

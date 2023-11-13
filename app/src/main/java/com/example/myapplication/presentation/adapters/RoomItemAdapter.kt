@@ -25,10 +25,10 @@ class RoomItemAdapter(
     }
 
     override fun onBindViewHolder(holder: RoomItemViewHolder, position: Int) {
-        val rooms = roomList[position]
-        holder.roomTv.text = rooms
+        val room = roomList[position]
+        holder.roomTv.text = room
         holder.itemView.setOnClickListener {
-            listener.onItemClick(rooms)
+            listener.onItemClick(room)
         }
     }
 
