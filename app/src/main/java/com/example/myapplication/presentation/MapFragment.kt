@@ -28,8 +28,6 @@ class MapFragment: Fragment() {
         (requireActivity().application as MinimapApp).component
     }
 
-//    val recyclerView: RecyclerView = binding.rvItemList
-
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         println("Handle exception: ${throwable.message}")
     }
