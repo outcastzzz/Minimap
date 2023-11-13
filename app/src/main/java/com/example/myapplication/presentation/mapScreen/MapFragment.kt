@@ -1,5 +1,6 @@
 package com.example.myapplication.presentation.mapScreen
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.myapplication.R
 import com.example.myapplication.data.network.ApiFactory
 import com.example.myapplication.databinding.FragmentMapBinding
 import com.example.myapplication.presentation.MinimapApp
@@ -108,6 +110,7 @@ class MapFragment: Fragment() {
         })
     }
 
+    @SuppressLint("InflateParams")
     private fun setupRecyclerView() {
         scope.launch {
             val response = ApiFactory.apiService.getAllRooms()
@@ -121,6 +124,11 @@ class MapFragment: Fragment() {
                         }
                     })
                     recyclerView.adapter = adapter
+                    val searchViewX = binding.searchView
+                    val searchViewLayout = LayoutInflater
+                        .from(requireContext().applicationContext)
+                        .inflate(R.layout.search_view, null)
+                    searchViewX
                     val searchView: SearchView = binding.searchItem
                     searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
                         override fun onQueryTextSubmit(query: String?): Boolean {
