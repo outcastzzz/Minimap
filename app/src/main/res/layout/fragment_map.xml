@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BCD4"
+    android:animateLayoutChanges="true"
+    android:background="#1D2C3B"
     tools:context=".presentation.mapScreen.MapFragment"
     tools:visibility="visible">
 
@@ -12,9 +13,9 @@
         android:id="@+id/iv_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="map"
         android:scaleType="fitCenter"
-        android:src="@drawable/house_rooms"
-        android:contentDescription="map" />
+        android:src="@drawable/house_rooms" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
             android:layout_marginTop="670dp"
             android:layout_marginEnd="47dp"
             android:background="@drawable/rounded_button"
-            android:backgroundTint="#4E90F3"
+            android:backgroundTint="#F7EC3F"
             android:text="A" />
 
         <Button
@@ -41,7 +42,7 @@
             android:layout_marginTop="670dp"
             android:layout_marginEnd="164dp"
             android:background="@drawable/rounded_button"
-            android:backgroundTint="#4E90F3"
+            android:backgroundTint="#F7EC3F"
             android:text="A" />
 
         <Button
@@ -53,7 +54,7 @@
             android:layout_marginTop="670dp"
             android:layout_marginEnd="281dp"
             android:background="@drawable/rounded_button"
-            android:backgroundTint="#4E90F3"
+            android:backgroundTint="#F7EC3F"
             android:text="A" />
 
         <SearchView
@@ -64,13 +65,23 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:background="@drawable/rounded_button"
-            android:backgroundTint="#8FB5ED">
+            android:backgroundTint="#F7EC3F">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_item_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
         </SearchView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_item_list"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="-600dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#F7EC3F"
+            android:visibility="visible" />
 
     </RelativeLayout>
 
