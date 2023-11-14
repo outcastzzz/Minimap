@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation
+package com.example.myapplication.presentation.mapScreen
 
 import android.content.Context
 import android.os.Bundle
@@ -8,19 +8,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.caverock.androidsvg.R
+import com.caverock.androidsvg.R.attr.svg
+import com.caverock.androidsvg.SVG
 import com.example.myapplication.data.network.ApiFactory
 import com.example.myapplication.databinding.FragmentMapBinding
+import com.example.myapplication.presentation.MinimapApp
 import com.example.myapplication.presentation.adapters.RoomItemAdapter
-import com.example.myapplication.presentation.mapScreen.MapViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 class MapFragment: Fragment() {
 
@@ -60,14 +62,19 @@ class MapFragment: Fragment() {
         }
     }
 
+    private val svgString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><svg width=\"24px\" height=\"24px\" stroke-width=\"1.5\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" color=\"#000000\"><path d=\"M7 12.5L10 15.5L17 8.5\" stroke=\"#000000\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path><path d=\"M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z\" stroke=\"#000000\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>"
+
     private fun setupMap() {
-        scope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             val svgData = ApiFactory.apiService.getMapImage()
-            val svgString = svgData.imgUrl
-            Glide.with(this@MapFragment)
-                .load(svgString)
-                .into(binding.ivMap)
-            Log.i("SwitchImg", "Switched")
+            withContext(Dispatchers.Main) {
+                val svgString = svgData.body()?.imgUrl?.replace("\\", " ")
+                Glide.with(requireActivity().applicationContext)
+                    .load(svgString)
+                    .into(binding.ivMap)
+                binding.ivMap.invalidate()
+                Log.i("MyTag", "SWITCHED")
+            }
         }
     }
 

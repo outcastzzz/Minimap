@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.example.myapplication.presentation.MapFragment"
+        android:name="com.example.myapplication.presentation.mapScreen.MapFragment"
         android:label="MapFragment"
         tools:layout="@layout/fragment_map" />
 </navigation>

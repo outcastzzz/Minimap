@@ -12,8 +12,8 @@ interface ApiService {
     @GET("7ai788")
     suspend fun getAllBuildings(): Response<Building>
 
-    @GET("-UEfMw")
-    suspend fun getMapImage(): Map
+    @GET("JbZvrj")
+    suspend fun getMapImage(): Response<Map>
 
     @GET("7ai788")
     suspend fun getAllRooms(): Response<Room>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00BCD4"
-    tools:context=".presentation.MapFragment"
+    tools:context=".presentation.mapScreen.MapFragment"
     tools:visibility="visible">
 
 
