@@ -36,7 +36,6 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        dataBinding = true
     }
 }
 
@@ -57,6 +56,8 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.11.0"))
+
+    implementation("com.caverock:androidsvg-aar:1.4")
 
     implementation("androidx.work:work-runtime-ktx:2.8.1")
 
