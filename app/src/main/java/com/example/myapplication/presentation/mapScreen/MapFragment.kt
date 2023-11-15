@@ -10,10 +10,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.SearchView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.request.ImageRequest
 import com.bumptech.glide.Glide
+import com.example.myapplication.R
 import com.example.myapplication.data.network.ApiFactory
 import com.example.myapplication.databinding.FragmentMapBinding
 import com.example.myapplication.presentation.MinimapApp
@@ -57,6 +64,7 @@ class MapFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupSpinner()
         binding.button1.setOnClickListener {
             setupMap()
         }
@@ -108,8 +116,17 @@ class MapFragment: Fragment() {
             val svgData = ApiFactory.apiService.getMapImage()
             withContext(Dispatchers.Main) {
                 val svgString = svgData.body()?.imgUrl?.replace("\\", " ")
+
+//                val imageLoader = ImageLoader.Builder(requireActivity().applicationContext)
+//                    .componentRegistry { add(SvgDecoder(this)) }
+//
+//                val request = ImageRequest.Builder(requireActivity().applicationContext)
+//                    .crossfade(true)
+//                    .crossfade(500)
+//                    .placeholder()
+
                 Glide.with(requireActivity().applicationContext)
-                    .load(svgString)
+                    .load("https://wdorogu.ru/images/wp-content/uploads/2018/05/Sommerlandschaft-Bilder-40.jpg")
                     .into(binding.ivMap)
                 binding.ivMap.invalidate()
                 Log.i("MyTag", "SWITCHED")
@@ -155,6 +172,40 @@ class MapFragment: Fragment() {
                         }
                     })
                 }
+            }
+        }
+    }
+
+    private fun setupSpinner() {
+        val spinView: Spinner = binding.spinner
+
+        val adapter = ArrayAdapter.createFromResource(
+            requireActivity().applicationContext,
+            R.array.spinner_items,
+            androidx.appcompat.R.layout.support_simple_spinner_dropdown_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinView.adapter = adapter
+
+        spinView.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (parent != null) {
+                    when(parent.getItemAtPosition(position).toString()) {
+                        "Item 1" -> binding.ivMap.setImageResource(R.drawable.house_rooms)
+                        "Item 2" -> binding.ivMap.setImageResource(R.drawable.smart_home)
+                        "Item 3" -> binding.ivMap.setImageResource(R.drawable.nazi_symbol_3_svgrepo_com)
+                        "Item 4" -> binding.ivMap.setImageResource(R.drawable.bottom_sheet_background)
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
             }
         }
     }

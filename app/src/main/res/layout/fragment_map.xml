@@ -83,6 +83,20 @@
             android:backgroundTint="#F7EC3F"
             android:visibility="visible" />
 
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="353dp"
+            android:layout_height="43dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/rounded_button"
+            android:backgroundTint="#75B52B"
+            android:clickable="true" />
+
     </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
