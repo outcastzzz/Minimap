@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#1E1C20"
+        android:backgroundTint="#F7EC3F"
         android:hapticFeedbackEnabled="false"
         android:orientation="horizontal"
         android:padding="16dp">
@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@{shopItem.name}"
-            android:textColor="#FFFFFF"
+            android:textColor="#1D2C3B"
             android:textColorHighlight="#083EFF"
             android:textSize="16sp"
             android:textStyle="bold"

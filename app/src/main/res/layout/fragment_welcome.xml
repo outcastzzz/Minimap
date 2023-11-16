@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BCD4"
+    android:background="#1D2C3B"
     tools:context=".presentation.WelcomeFragment">
 
     <Button
@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#1E1C20"
+        android:backgroundTint="#F7EC3F"
         android:text="find"
-        android:textColor="#FFFFFF"
+        android:textColor="#020202"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,9 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#1E1C20"
+        android:backgroundTint="#F7EC3F"
         android:text="Scan"
-        android:textColor="#FFF7F7"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
