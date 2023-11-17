@@ -42,7 +42,7 @@
             android:layout_marginBottom="32dp"
             android:width="128dp"
             android:background="@drawable/rounded_button"
-            android:backgroundTint="#1D2C3B"
+            android:backgroundTint="#412919"
             android:text="Back"
             android:textColor="#FFFFFF"
             android:textColorLink="#D69C9C"
