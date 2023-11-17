@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.data.network.ApiFactory
 import com.example.myapplication.databinding.FragmentListOfRoomsBinding
@@ -65,7 +67,29 @@ class ListOfBuildingsFragment: Fragment() {
                             launchMapFragment()
                         }
                     })
+                    binding.rvItemList.layoutManager = LinearLayoutManager(requireContext())
                     binding.rvItemList.adapter = adapter
+                    val searchView = binding.searchView
+                    searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            return false
+                        }
+
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                            val filteredItems = buildings.filter {
+                                it.contains(newText ?: "", ignoreCase = true)
+                            }
+                            binding.rvItemList.adapter = BuildingItemAdapter(
+                                filteredItems,
+                                object: BuildingItemAdapter.OnItemClickListener {
+                                    override fun onItemClick(building: String) {
+
+                                    }
+                                }
+                            )
+                            return false
+                        }
+                    })
                 }
             }
             throw IllegalStateException("Child coroutine failed")

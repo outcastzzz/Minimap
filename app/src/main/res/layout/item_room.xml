@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#F7EC3F"
+        android:backgroundTint="#221E27"
         android:orientation="horizontal"
         android:padding="16dp">
 
@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:gravity="center|clip_vertical|center_horizontal"
             android:text="@{shopItem.name}"
-            android:textColor="#1D2C3B"
+            android:textColor="#FFFFFF"
             android:textColorHighlight="#083EFF"
             android:textSize="16sp"
             android:textStyle="bold"

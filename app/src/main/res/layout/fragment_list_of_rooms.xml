@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1D2C3B"
+    android:background="@drawable/background_gradient"
     tools:context=".presentation.buildingsScreen.ListOfBuildingsFragment"
     tools:visibility="visible">
 
         <SearchView
-            android:id="@+id/searchView2"
+            android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#1E1C20"
@@ -30,7 +30,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView2"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"
             tools:listitem="@layout/item_build">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -42,7 +42,7 @@
             android:layout_marginBottom="32dp"
             android:width="128dp"
             android:background="@drawable/rounded_button"
-            android:backgroundTint="#412919"
+            android:backgroundTint="#4E586E"
             android:text="Back"
             android:textColor="#FFFFFF"
             android:textColorLink="#D69C9C"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1D2C3B"
+    android:background="@drawable/background_gradient"
     tools:context=".presentation.WelcomeFragment">
 
     <Button
@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#F7EC3F"
+        android:backgroundTint="#221E27"
         android:text="find"
-        android:textColor="#020202"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,9 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="#F7EC3F"
+        android:backgroundTint="#221E27"
         android:text="Scan"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
         android:layout_marginStart="70dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="71dp"
-        android:src="@drawable/smart_home"
+        android:src="@drawable/maps_arrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

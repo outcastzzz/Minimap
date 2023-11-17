@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_alignParentBottom="true"
+        android:background="#ABBDBD"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,8 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:background="#412919">
+            android:layout_centerHorizontal="true">
 
         </SearchView>
 
@@ -34,7 +34,6 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="-600dp"
-            android:background="#412919"
             android:visibility="visible" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

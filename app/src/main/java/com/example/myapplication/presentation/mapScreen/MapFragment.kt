@@ -56,11 +56,6 @@ class MapFragment: Fragment() {
     override fun onAttach(context: Context) {
         component.inject(this)
         super.onAttach(context)
-        val window = activity?.window
-        if (window != null) {
-            WindowCompat.setDecorFitsSystemWindows(window, true)
-            WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
-        }
     }
 
     override fun onCreateView(
@@ -69,11 +64,13 @@ class MapFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMapBinding.inflate(layoutInflater, container, false)
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupSpinner()
         binding.button1.setOnClickListener {
             setupMap()
@@ -131,48 +128,6 @@ class MapFragment: Fragment() {
             }
         }
     }
-
-//    private fun setupRecyclerView() {
-//        scope.launch {
-//            val response = ApiFactory.apiService.getAllRooms()
-//            withContext(Dispatchers.Main) {
-//                if(response.isSuccessful && response.body() != null) {
-//                    val rooms = response.body()?.room
-//                    val adapter = RoomItemAdapter(
-//                        rooms!!,
-//                        object: RoomItemAdapter.OnItemClickListener {
-//                        override fun onItemClick(room: String) {
-//                        }
-//                    })
-//                    binding.rvItemList.adapter = adapter
-//                    val searchView: SearchView = binding.searchItem
-//                    searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-//                        override fun onQueryTextSubmit(query: String?): Boolean {
-//                            return false
-//                        }
-//
-//                        override fun onQueryTextChange(newText: String?): Boolean {
-//                               val filteredItems = rooms.filter {
-//                                   it.contains(newText ?: "", ignoreCase = true)
-//                               }
-//                            binding.rvItemList.adapter = RoomItemAdapter(
-//                                filteredItems,
-//                                object: RoomItemAdapter.OnItemClickListener {
-//                                override fun onItemClick(room: String) {
-//                                    Toast.makeText(
-//                                        requireActivity().applicationContext,
-//                                        "clicked",
-//                                        Toast.LENGTH_SHORT
-//                                    ).show()
-//                                }
-//                            })
-//                            return false
-//                        }
-//                    })
-//                }
-//            }
-//        }
-//    }
 
     private fun setupSpinner() {
         val spinView: Spinner = binding.spinner
