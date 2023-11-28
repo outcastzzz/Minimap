@@ -3,17 +3,14 @@ package com.example.myapplication.domain.repository
 import androidx.lifecycle.LiveData
 import com.example.myapplication.domain.entities.Building
 import com.example.myapplication.domain.entities.Room
-import net.sourceforge.zbar.Image
 
 interface MapRepository {
 
-    fun getListOfRooms(buildingId: Int): LiveData<List<Room>>
+    suspend fun getListOfRooms(building: Building): LiveData<List<String>>
 
-    fun getRoomById(roomId: String): Room
+    suspend fun getRoomByName(roomName: String): LiveData<Room>
 
-    fun loadData()
+    suspend fun getListOfBuildings(): LiveData<List<String>>
 
-    fun getListOfBuildings(): List<Building>
-
-    fun getMapImage(buildingId: Int): String
+    suspend fun getBuildingByName(buildingName: String): LiveData<Building>
 }

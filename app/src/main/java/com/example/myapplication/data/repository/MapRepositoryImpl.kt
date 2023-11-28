@@ -1,40 +1,30 @@
 package com.example.myapplication.data.repository
 
 import androidx.lifecycle.LiveData
-import com.example.myapplication.data.network.ApiFactory
+import com.example.myapplication.data.network.ApiService
 import com.example.myapplication.domain.entities.Building
 import com.example.myapplication.domain.entities.Room
 import com.example.myapplication.domain.repository.MapRepository
-import com.example.myapplication.presentation.adapters.BuildingItemAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.Response
 import javax.inject.Inject
-import javax.security.auth.callback.Callback
 
 class MapRepositoryImpl @Inject constructor(
+    private val apiService: ApiService
 
 ): MapRepository {
 
-    override fun getListOfRooms(buildingId: Int): LiveData<List<Room>> {
-        TODO()
+    override suspend fun getListOfRooms(building: Building): LiveData<List<String>> {
+
     }
 
-    override fun getRoomById(roomId: String): Room {
-        TODO()
+    override suspend fun getRoomByName(roomName: String): LiveData<Room> {
+
     }
 
-    override fun loadData() {
-        TODO()
+    override suspend fun getListOfBuildings(): LiveData<List<String>> {
+        return apiService.getListOfBuilding()
     }
 
-    override fun getListOfBuildings(): List<Building> {
-        TODO()
-    }
-
-    override fun getMapImage(buildingId: Int): String {
-        TODO()
+    override suspend fun getBuildingByName(buildingName: String): LiveData<Building> {
+        val response = apiService.getBuildingByName(buildingName)
     }
 }

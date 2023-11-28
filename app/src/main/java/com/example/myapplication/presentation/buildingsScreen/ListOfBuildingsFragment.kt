@@ -48,51 +48,8 @@ class ListOfBuildingsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView()
         binding.button.setOnClickListener {
             launchWelcomeFragment()
-        }
-    }
-
-    private fun setupRecyclerView() {
-        scope.launch {
-            val response = ApiFactory.apiService.getAllBuildings()
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful && response.body() != null) {
-                    val buildings = response.body()?.build
-                    val adapter = BuildingItemAdapter(
-                        buildings!!,
-                        object: BuildingItemAdapter.OnItemClickListener {
-                        override fun onItemClick(building: String) {
-                            launchMapFragment()
-                        }
-                    })
-                    binding.rvItemList.layoutManager = LinearLayoutManager(requireContext())
-                    binding.rvItemList.adapter = adapter
-                    val searchView = binding.searchView
-                    searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-                        override fun onQueryTextSubmit(query: String?): Boolean {
-                            return false
-                        }
-
-                        override fun onQueryTextChange(newText: String?): Boolean {
-                            val filteredItems = buildings.filter {
-                                it.contains(newText ?: "", ignoreCase = true)
-                            }
-                            binding.rvItemList.adapter = BuildingItemAdapter(
-                                filteredItems,
-                                object: BuildingItemAdapter.OnItemClickListener {
-                                    override fun onItemClick(building: String) {
-
-                                    }
-                                }
-                            )
-                            return false
-                        }
-                    })
-                }
-            }
-            throw IllegalStateException("Child coroutine failed")
         }
     }
 

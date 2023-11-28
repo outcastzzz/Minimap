@@ -1,7 +1,8 @@
 package com.example.myapplication.domain.entities
 
 data class Building(
-    val build: List<String>,
+    val id: Int,
     val rooms: List<String>,
-    val id: Int
+    val maps: List<String>,
+    val address: String
 )

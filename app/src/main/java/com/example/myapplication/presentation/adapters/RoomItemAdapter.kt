@@ -2,12 +2,7 @@ package com.example.myapplication.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.databinding.ItemRoomBinding
-import com.example.myapplication.domain.entities.Building
-import com.example.myapplication.domain.entities.Room
 
 class RoomItemAdapter(
     private val roomList: List<String>,

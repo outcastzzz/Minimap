@@ -1,21 +1,16 @@
 package com.example.myapplication.data.network
 
+import androidx.lifecycle.LiveData
 import com.example.myapplication.domain.entities.Building
-import com.example.myapplication.domain.entities.Map
-import com.example.myapplication.domain.entities.Room
-import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiService {
 
-    @GET("7ai788")
-    suspend fun getAllBuildings(): Response<Building>
+    @GET("")
+    suspend fun getListOfBuilding(): LiveData<List<String>>
 
-    @GET("JbZvrj")
-    suspend fun getMapImage(): Response<Map>
-
-    @GET("JoW-I_")
-    suspend fun getAllRooms(): Response<Room>
+    @GET("{buildingName}")
+    suspend fun getBuildingByName(@Path("buildingName") buildingName: String): LiveData<Building>
 
 }
