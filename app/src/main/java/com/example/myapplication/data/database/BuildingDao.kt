@@ -1,14 +1,17 @@
 package com.example.myapplication.data.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import com.example.myapplication.domain.entities.Building
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 
 @Dao
 interface BuildingDao {
 
-    suspend fun getBuilding(buildingName: String): LiveData<BuildingDbModel>
+    @Query("SELECT * FROM building_table")
+    suspend fun getBuilding(): BuildingDbModel
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBuilding(building: BuildingDbModel)
 
 }

@@ -8,16 +8,14 @@ import javax.inject.Inject
 class BuildingMapper @Inject constructor() {
 
     fun mapDtoToDbModel(dto: BuildingDto) = BuildingDbModel(
-        id = dto.id,
         rooms = dto.rooms,
-        maps = dto.maps,
+        mainMap = dto.mainMap,
         address = dto.address
     )
 
     fun mapDbModelToEntity(dbModel: BuildingDbModel) = Building(
-        id = dbModel.id,
         rooms = dbModel.rooms,
-        maps = dbModel.maps,
+        mainMap = dbModel.mainMap,
         address = dbModel.address
     )
 }

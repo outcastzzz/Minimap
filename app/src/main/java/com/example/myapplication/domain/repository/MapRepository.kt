@@ -6,11 +6,11 @@ import com.example.myapplication.domain.entities.Room
 
 interface MapRepository {
 
-    suspend fun getListOfRooms(building: Building): LiveData<List<String>>
+    suspend fun getListOfRooms(buildingName: String): List<String>
 
-    suspend fun getRoomByName(roomName: String): LiveData<Room>
+    suspend fun getRoomByName(roomName: String): Room
 
-    suspend fun getListOfBuildings(): LiveData<List<String>>
+    suspend fun getListOfBuildings(): List<String>
 
-    suspend fun getBuildingByName(buildingName: String): LiveData<Building>
+    suspend fun getBuildingByName(buildingName: String): Building
 }

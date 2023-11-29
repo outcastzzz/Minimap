@@ -9,13 +9,7 @@ import com.example.myapplication.domain.entities.Building
 
 class BuildingItemAdapter(
     private val buildings: List<String>,
-    private val listener: OnItemClickListener
-): ListAdapter<Building, BuildingViewHolder>(BuildingItemDiffCallback()) {
-
-
-    interface OnItemClickListener {
-        fun onItemClick(building: String)
-    }
+): ListAdapter<String, BuildingViewHolder>(BuildingItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildingViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -26,9 +20,6 @@ class BuildingItemAdapter(
     override fun onBindViewHolder(holder: BuildingViewHolder, position: Int) {
         val building = buildings[position]
         holder.buildTv.text = building
-        holder.itemView.setOnClickListener {
-            listener.onItemClick(building)
-        }
     }
 
     override fun getItemCount(): Int {

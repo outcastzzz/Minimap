@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/listOfRooms"
-        android:name="com.example.myapplication.presentation.buildingsScreen.ListOfBuildingsFragment"
+        android:name="com.example.myapplication.presentation.ListOfBuildingsFragment"
         android:label="fragment_list_of_rooms"
         tools:layout="@layout/fragment_list_of_rooms">
         <action
@@ -70,11 +70,19 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/listOfRooms" />
+        <argument
+            android:name="buildingName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.example.myapplication.presentation.mapScreen.MapFragment"
+        android:name="com.example.myapplication.presentation.MapFragment"
         android:label="MapFragment"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map">
+        <argument
+            android:name="buildingName"
+            app:argType="string" />
+    </fragment>
 </navigation>

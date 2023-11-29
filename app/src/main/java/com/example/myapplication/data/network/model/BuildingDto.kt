@@ -5,18 +5,15 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "building")
+@Entity(tableName = "building_table")
 data class BuildingDto (
-    @SerializedName("")
-    @Expose
-    @PrimaryKey
-    val id: Int,
     @SerializedName("")
     @Expose
     val rooms: List<String>,
     @SerializedName("")
     @Expose
-    val maps: List<String>,
+    val mainMap: String,
+    @PrimaryKey
     @SerializedName("")
     @Expose
     val address: String

@@ -3,11 +3,10 @@ package com.example.myapplication.data.database
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "building")
+@Entity(tableName = "building_table")
 data class BuildingDbModel(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
     val rooms: List<String>,
-    val maps: List<String>,
+    val mainMap: String,
+    @PrimaryKey
     val address: String
 )

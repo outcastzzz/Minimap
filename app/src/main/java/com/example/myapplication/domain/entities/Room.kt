@@ -1,8 +1,7 @@
 package com.example.myapplication.domain.entities
 
 data class Room(
-    val id: String,
     val name: String,
-    val maps: String,
+    val maps: List<String>,
     val floor: Int
 )

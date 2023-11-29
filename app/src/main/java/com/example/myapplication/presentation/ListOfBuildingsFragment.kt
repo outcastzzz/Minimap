@@ -1,26 +1,18 @@
-package com.example.myapplication.presentation.buildingsScreen
+package com.example.myapplication.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
+import androidx.core.os.bundleOf
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
-import com.example.myapplication.data.network.ApiFactory
 import com.example.myapplication.databinding.FragmentListOfRoomsBinding
-import com.example.myapplication.presentation.ViewModelFactory
 import com.example.myapplication.presentation.adapters.BuildingItemAdapter
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.lang.IllegalStateException
 import javax.inject.Inject
 
 class ListOfBuildingsFragment: Fragment() {
@@ -31,11 +23,7 @@ class ListOfBuildingsFragment: Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
-    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        println("Handle exception: ${throwable.message}")
-    }
-    private val scope = CoroutineScope(Dispatchers.IO + coroutineExceptionHandler)
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,6 +36,16 @@ class ListOfBuildingsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity(), viewModelFactory)[MainViewModel::class.java]
+        viewModel.buildings.observe(viewLifecycleOwner) {
+            val adapter = BuildingItemAdapter(it)
+            binding.rvItemList.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
+            binding.rvItemList.adapter = adapter
+            adapter.submitList(it)
+        }
+        binding.rvItemList.setOnClickListener {
+            launchMapFragment()
+        }
         binding.button.setOnClickListener {
             launchWelcomeFragment()
         }
@@ -57,8 +55,10 @@ class ListOfBuildingsFragment: Fragment() {
         findNavController().navigate(R.id.action_listOfRooms_to_welcomeFragment)
     }
 
-    private fun launchMapFragment() {
-        findNavController().navigate(R.id.action_listOfRooms_to_mapFragment)
+    private fun launchMapFragment(buildingName: String) {
+        findNavController().navigate(
+            ListOfBuildingsFragmentDirections.actionListOfRoomsToMapFragment(buildingName)
+        )
     }
 
     override fun onDestroyView() {

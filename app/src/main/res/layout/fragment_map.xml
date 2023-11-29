@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@drawable/background_gradient"
-    tools:context=".presentation.mapScreen.MapFragment"
+    tools:context=".presentation.MapFragment"
     tools:visibility="visible">
 
 

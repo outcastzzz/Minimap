@@ -1,7 +1,7 @@
 package com.example.myapplication.di
 
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.presentation.mapScreen.MapViewModel
+import com.example.myapplication.presentation.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -11,7 +11,7 @@ interface ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MapViewModel::class)
-    fun bindMapViewModel(viewModel: MapViewModel): ViewModel
+    @ViewModelKey(MainViewModel::class)
+    fun bindMapViewModel(viewModel: MainViewModel): ViewModel
 
 }
