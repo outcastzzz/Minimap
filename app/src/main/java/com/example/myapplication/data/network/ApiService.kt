@@ -4,6 +4,7 @@ import com.example.myapplication.data.network.model.BuildingDto
 import com.example.myapplication.data.network.model.BuildingsName
 import com.example.myapplication.data.network.model.RouteDto
 import com.example.myapplication.data.network.model.RoomsName
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path

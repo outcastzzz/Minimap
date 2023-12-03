@@ -16,6 +16,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,6 +46,7 @@ class MapFragment: Fragment() {
 
     private var roomStart = ""
     private var roomEnd = ""
+    private var buildingName = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,6 +65,7 @@ class MapFragment: Fragment() {
             val mapsWithoutRoute = convertStringToSvg(it.floors)
 
         }
+
         binding.btnChooseFrom.setOnClickListener {
             showChooseLayout(binding.linLayout)
             chooseStartRoom()
@@ -173,20 +176,20 @@ class MapFragment: Fragment() {
     }
 
 
-
     private fun chooseEndRoom(): String {
         viewModel.rooms.observe(viewLifecycleOwner) {
             val adapter = RoomItemAdapter(it) { name ->
                 roomEnd = name
                 binding.tvTo.text = name
                 hideChooseLayout(binding.linLayout)
-                viewModel.getRoute("college", roomStart, roomEnd)
+                viewModel.getRoute(viewModel.building.value!!.address, roomStart, roomEnd)
                 setupBuildingByFind()
             }
             binding.rvRoomList.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
             binding.rvRoomList.adapter = adapter
             adapter.submitList(it)
         }
+
         return roomEnd
     }
 

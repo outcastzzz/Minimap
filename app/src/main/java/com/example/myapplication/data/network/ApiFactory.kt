@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {
-    private const val BASE_URL = "http://26.140.209.161:8000/"
+    private const val BASE_URL = "https://django-seu8.onrender.com/"
 
     private fun setupInterceptor(): OkHttpClient {
         val interceptor = HttpLoggingInterceptor()

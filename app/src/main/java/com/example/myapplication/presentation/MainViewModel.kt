@@ -37,11 +37,10 @@ class MainViewModel @Inject constructor(
     private val _building = MutableLiveData<Building>()
     val building: LiveData<Building> = _building
 
-    fun getBuildingByName(buildingName: String) {
-        Log.d("BuildNameTag", "done")
+    fun getBuildingByName(buildingNameStr: String) {
         viewModelScope.launch {
             try {
-                val building = getBuildingByNameUseCase.getBuildingByName(buildingName)
+                val building = getBuildingByNameUseCase.getBuildingByName(buildingNameStr)
                 _building.value = building
             } catch (e: Exception) {
                 _errorMessage.value = e.message
@@ -83,7 +82,6 @@ class MainViewModel @Inject constructor(
                 _errorMessage.value = e.message
             }
         }
-
     }
 
 }

@@ -1,8 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.MyApplication" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:fontFamily">@font/nunito_regular</item>
     </style>
 
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
@@ -22,4 +21,6 @@
         parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bottom_sheet_background</item>
     </style>
+
+
 </resources>

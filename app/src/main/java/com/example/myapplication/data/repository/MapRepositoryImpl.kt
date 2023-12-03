@@ -2,9 +2,8 @@ package com.example.myapplication.data.repository
 
 import com.example.myapplication.data.database.BuildingDao
 import com.example.myapplication.data.mapper.BuildingMapper
-import com.example.myapplication.data.mapper.RoomMapper
+import com.example.myapplication.data.mapper.RouteMapper
 import com.example.myapplication.data.network.ApiService
-import com.example.myapplication.data.network.model.RouteDto
 import com.example.myapplication.domain.entities.Building
 import com.example.myapplication.domain.entities.Route
 import com.example.myapplication.domain.repository.MapRepository
@@ -13,7 +12,7 @@ import javax.inject.Inject
 class MapRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val buildingDao: BuildingDao,
-    private val rMapper: RoomMapper,
+    private val rMapper: RouteMapper,
     private val bMapper: BuildingMapper
 ): MapRepository {
 
@@ -38,8 +37,7 @@ class MapRepositoryImpl @Inject constructor(
         val buildingInfo = apiService.getBuildingByName(buildingName = buildingName)
         val buildingDbModel = bMapper.mapDtoToDbModel(buildingInfo)
         buildingDao.insertBuilding(buildingDbModel)
-        val entity = buildingDao.getBuilding()
+        val entity = buildingDao.getBuilding(buildingName)
         return bMapper.mapDbModelToEntity(entity)
     }
-
 }
