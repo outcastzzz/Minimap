@@ -7,14 +7,11 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "building_table")
 data class BuildingDto (
-    @SerializedName("")
-    @Expose
-    val rooms: List<String>,
-    @SerializedName("")
-    @Expose
-    val mainMap: String,
     @PrimaryKey
-    @SerializedName("")
+    @SerializedName("build")
     @Expose
-    val address: String
+    val address: String,
+    @SerializedName("maps")
+    @Expose
+    val floors: List<String>
 )

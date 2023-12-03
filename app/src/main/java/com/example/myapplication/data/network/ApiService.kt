@@ -1,25 +1,31 @@
 package com.example.myapplication.data.network
 
-import androidx.lifecycle.LiveData
 import com.example.myapplication.data.network.model.BuildingDto
-import com.example.myapplication.data.network.model.RoomDto
-import com.example.myapplication.domain.entities.Building
-import com.example.myapplication.domain.entities.Room
+import com.example.myapplication.data.network.model.BuildingsName
+import com.example.myapplication.data.network.model.RouteDto
+import com.example.myapplication.data.network.model.RoomsName
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Path
 
 interface ApiService {
 
-    @GET("")
-    suspend fun getListOfBuilding(): List<String>
+    @GET("getBuildings")
+    suspend fun getListOfBuilding(): BuildingsName
 
-    @GET("{buildingName}")
-    suspend fun getBuildingByName(@Path("buildingName") buildingName: String): BuildingDto
+    @GET("connectWithMobile/{buildingName}")
+    suspend fun getBuildingByName(
+        @Header("ngrok-skip-browser-warning") ngrokSkipBrowserWarning: String = "skit",
+        @Path("buildingName") buildingName: String
+    ): BuildingDto
 
-    @GET("")
-    suspend fun getListOfRooms(@Path("buildingName") buildingName: String): List<String>
+    @GET("getListOfRooms/{buildingName}")
+    suspend fun getListOfRooms(@Path("buildingName") buildingName: String): RoomsName
 
-    @GET("")
-    suspend fun getRoomByName(@Path("roomName") roomName: String): RoomDto
-
+    @GET("generateImages/{buildingName}/{roomNameStart}/{roomNameEnd}")
+    suspend fun getRouteByName(
+        @Path("buildingName") buildingName: String,
+        @Path("roomNameStart") roomNameStart: String,
+        @Path("roomNameEnd") roomNameEnd: String
+    ): RouteDto
 }

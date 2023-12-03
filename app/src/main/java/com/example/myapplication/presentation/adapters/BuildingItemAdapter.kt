@@ -9,6 +9,7 @@ import com.example.myapplication.domain.entities.Building
 
 class BuildingItemAdapter(
     private val buildings: List<String>,
+    private val callback: (String) -> Unit
 ): ListAdapter<String, BuildingViewHolder>(BuildingItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildingViewHolder {
@@ -20,6 +21,9 @@ class BuildingItemAdapter(
     override fun onBindViewHolder(holder: BuildingViewHolder, position: Int) {
         val building = buildings[position]
         holder.buildTv.text = building
+        holder.itemView.setOnClickListener {
+            callback.invoke(holder.buildTv.text.toString())
+        }
     }
 
     override fun getItemCount(): Int {

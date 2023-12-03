@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/background_main"
     tools:context=".presentation.MapFragment"
     tools:visibility="visible">
 
@@ -13,67 +15,114 @@
         android:id="@+id/iv_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:contentDescription="map"
         android:scaleType="fitCenter"
         android:src="@drawable/house_rooms" />
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/items_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="70dp"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="670dp"
-            android:layout_marginEnd="47dp"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="#221E27"
-            android:text="A"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="70dp"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="670dp"
-            android:layout_marginEnd="164dp"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="#221E27"
-            android:text="A"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="70dp"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="670dp"
-            android:layout_marginEnd="281dp"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="#221E27"
-            android:text="A"
-            android:textColor="#FFFFFF" />
-
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="353dp"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="25dp"
             android:background="@drawable/rounded_button"
-            android:backgroundTint="#221E27"
-            android:clickable="true" />
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="10dp"
+            android:text="Откуда"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <TextView
+            android:id="@+id/tv_to"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="45dp"
+            android:text="Куда"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="227dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginEnd="200dp"
+            android:src="@drawable/right_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_choose_from"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_button"
+            android:text="Выбрать"
+            app:layout_constraintEnd_toEndOf="@+id/tv_from"
+            app:layout_constraintStart_toStartOf="@+id/tv_from"
+            app:layout_constraintTop_toBottomOf="@+id/tv_from" />
+
+        <Button
+            android:id="@+id/btn_choose_to"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rounded_button"
+            android:text="Выбрать"
+            app:layout_constraintEnd_toEndOf="@+id/tv_to"
+            app:layout_constraintStart_toStartOf="@+id/tv_to"
+            app:layout_constraintTop_toBottomOf="@+id/tv_to" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bottom_sheet_background"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </SearchView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_room_list"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

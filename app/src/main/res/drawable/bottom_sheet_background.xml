@@ -10,5 +10,5 @@
         android:left="0dip"
         android:right="0dip"
         android:top="0dip" />
-    <solid android:color="#0C1C3C" />
+    <solid android:color="#C8CFCD" />
 </shape>

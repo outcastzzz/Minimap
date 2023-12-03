@@ -5,8 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "building_table")
 data class BuildingDbModel(
-    val rooms: List<String>,
-    val mainMap: String,
     @PrimaryKey
-    val address: String
+    val address: String,
+    val floors: List<String>,
 )

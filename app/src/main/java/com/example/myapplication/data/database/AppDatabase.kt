@@ -4,10 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 
-@Database(entities = [BuildingDbModel::class, RoomDbModel::class], version = 2, exportSchema = false)
+@Database(entities = [BuildingDbModel::class], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
 
@@ -35,6 +34,5 @@ abstract class AppDatabase: RoomDatabase() {
     }
 
     abstract fun buildingDao(): BuildingDao
-    abstract fun roomDao(): RoomDao
 
 }

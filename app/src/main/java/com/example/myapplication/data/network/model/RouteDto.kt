@@ -5,16 +5,11 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "room_table")
-data class RoomDto (
-    @PrimaryKey
-    @SerializedName("")
+data class RouteDto (
+    @SerializedName("floor")
     @Expose
-    val name: String,
-    @SerializedName("")
+    val floors: List<Int>,
+    @SerializedName("maps")
     @Expose
-    val maps: List<String>,
-    @SerializedName("")
-    @Expose
-    val floor: Int
+    val maps: List<String>
 )
